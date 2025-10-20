@@ -26,7 +26,7 @@ public class EnemyFOV : MonoBehaviour
         while (true)
         {
             yield return wait;
-
+            FieldOfViewCheck();
         }
     }
 
@@ -43,8 +43,11 @@ public class EnemyFOV : MonoBehaviour
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
+                Debug.Log("am i here rn");
+
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
                 {
+                    Debug.Log("what about here?");
                     playerVisable = true;
                 }
                 else
