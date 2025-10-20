@@ -39,12 +39,12 @@ public class EnemyFOV : MonoBehaviour
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
+            //this checks to see if the player is within the fov cone
             if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                Debug.Log("am i here rn");
-
+                //then when inside fov cone, the enemy detects the player
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
                 {
                     Debug.Log("what about here?");
@@ -73,8 +73,8 @@ public class EnemyFOV : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, radius);
 
         Vector3 viewAngle1 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
         Vector3 viewAngle2 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);

@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navAgent;
     private PlayerControls player;
     private Transform playerPosition;
+    private EnemyFOV enemyView;
     private Vector3 destination;
     private float distance;
     private bool reversePath = false;
@@ -20,20 +21,27 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
+        enemyView = GetComponent<EnemyFOV>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Patrol();
+        if (waypoints.Length > 0 && !enemyView.IsPlayerVisible())
+        {
+            Patrol();
+        }
+        else if (enemyView.IsPlayerVisible())
+        {
+            ChaseTarget();
+        }
     }
 
+    //this has the enemy follow waypoints
     public void Patrol()
     {
         distance = Vector3.Distance(gameObject.transform.position, waypoints[curWaypoint].position);
-        destination = playerPosition.position;
-        float playerDistance = Vector3.Distance(gameObject.transform.position, destination);
 
         if(distance > 2f)
         {
@@ -67,5 +75,13 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+    }
+
+    //upon seeing the player, the enemy will then chase after the player
+    public void ChaseTarget()
+    {
+        destination = playerPosition.position;
+        navAgent.SetDestination(destination);
+        distance = Vector3.Distance(gameObject.transform.position, destination);
     }
 }
