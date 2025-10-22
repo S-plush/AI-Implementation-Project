@@ -9,6 +9,8 @@ public class PlayerControls : MonoBehaviour
     private CharacterController charController;
     private float ySpeed;
 
+    public float rotateSpeed;
+
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
@@ -34,7 +36,7 @@ public class PlayerControls : MonoBehaviour
 
         if (horizontalInput > 0 || horizontalInput < 0)
         {
-            this.gameObject.transform.Rotate(new Vector3(0, horizontalInput, 0));
+            this.gameObject.transform.Rotate(new Vector3(0, horizontalInput * rotateSpeed, 0));
         }
 
         float magnitude = Mathf.Clamp01(moveDirection.magnitude) * movementSpd;
