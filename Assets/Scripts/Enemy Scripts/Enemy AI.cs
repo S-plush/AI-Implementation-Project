@@ -126,7 +126,10 @@ public class EnemyAI : MonoBehaviour
     //after player escapes sight, they'll go towards where the player was last seen and rotate until timer is done
     public void SearchTarget()
     {
-        searchTimer -= Time.deltaTime;
-        this.transform.Rotate(0, 50 * Time.deltaTime, 0);
+        if(navAgent.remainingDistance <= navAgent.stoppingDistance)
+        {
+            searchTimer -= Time.deltaTime;
+            this.transform.Rotate(0, 80 * Time.deltaTime, 0);
+        }
     }
 }

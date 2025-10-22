@@ -6,10 +6,11 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject door;
+    [SerializeField] private Vector3 closedDoorPosition;
+    [SerializeField] private Vector3 openDoorPosition;
 
     private Door doorStatus;
 
-    private bool doorClosed = false;
     private bool playerInside = false;
 
     private void Start()
@@ -33,7 +34,7 @@ public class DoorInteraction : MonoBehaviour
     public IEnumerator CloseDoor()
     {
         doorStatus.OpenDoor();
-        Vector3 targetPosition = door.transform.position + new Vector3(0, 0, 1 * 5);
+        Vector3 targetPosition = door.transform.position + closedDoorPosition;
         Vector3 startingPosition = door.transform.position;
         float movingTime = .5f;
         float elapsedTime = 0f;
@@ -52,7 +53,7 @@ public class DoorInteraction : MonoBehaviour
     public IEnumerator OpenDoor()
     {
         doorStatus.OpenDoor();
-        Vector3 targetPosition = door.transform.position + new Vector3(0, 0, 1 * -5);
+        Vector3 targetPosition = door.transform.position + openDoorPosition;
         Vector3 startingPosition = door.transform.position;
         float movingTime = .5f;
         float elapsedTime = 0f;
