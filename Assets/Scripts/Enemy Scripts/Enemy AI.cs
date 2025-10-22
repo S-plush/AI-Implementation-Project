@@ -6,16 +6,23 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private List<Transform> waypoints;
+    [SerializeField] private float searchDuration;
 
     private NavMeshAgent navAgent;
     private PlayerControls player;
     private Transform playerPosition;
     private EnemyFOV enemyView;
+
     private Vector3 destination;
+    private enum Behaviours { Patrol, Chase, Search };
+    private Behaviours aiState = Behaviours.Patrol;
+
     private float distance;
     private bool reversePath = false;
     private int curWaypoint = 0;
+    private int waypointsCount;
+    private float searchTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -23,18 +30,49 @@ public class EnemyAI : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         enemyView = GetComponent<EnemyFOV>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        waypointsCount = waypoints.Count;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (waypoints.Length > 0 && !enemyView.IsPlayerVisible())
+        switch (aiState)
         {
-            Patrol();
-        }
-        else if (enemyView.IsPlayerVisible())
-        {
-            ChaseTarget();
+            case Behaviours.Patrol:
+                Patrol();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    aiState = Behaviours.Chase;
+                }
+
+                break;
+            case Behaviours.Chase:
+                if (enemyView.IsPlayerVisible())
+                {
+                    ChaseTarget();
+                }
+                else if (!enemyView.IsPlayerVisible())
+                {
+                    searchTimer = searchDuration;
+                    navAgent.SetDestination(destination);
+                    aiState = Behaviours.Search;
+                }
+
+                break;
+            case Behaviours.Search:
+                SearchTarget();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    aiState = Behaviours.Chase;
+                }
+                else if(searchTimer <= 0)
+                {
+                    aiState= Behaviours.Patrol;
+                }
+
+                break;
         }
     }
 
@@ -64,7 +102,7 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                if(curWaypoint >= waypoints.Length - 1)
+                if(curWaypoint >= waypoints.Count - 1)
                 {
                     reversePath = true;
                 }
@@ -83,5 +121,15 @@ public class EnemyAI : MonoBehaviour
         destination = playerPosition.position;
         navAgent.SetDestination(destination);
         distance = Vector3.Distance(gameObject.transform.position, destination);
+    }
+
+    //after player escapes sight, they'll go towards where the player was last seen and rotate until timer is done
+    public void SearchTarget()
+    {
+        if(navAgent.remainingDistance <= navAgent.stoppingDistance)
+        {
+            searchTimer -= Time.deltaTime;
+            this.transform.Rotate(0, 80 * Time.deltaTime, 0);
+        }
     }
 }

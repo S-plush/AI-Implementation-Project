@@ -79,7 +79,7 @@ public class EnemyFOV : MonoBehaviour
         Vector3 viewAngle1 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
         Vector3 viewAngle2 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
 
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + viewAngle1 * radius);
         Gizmos.DrawLine(transform.position, transform.position + viewAngle2 * radius);
 
