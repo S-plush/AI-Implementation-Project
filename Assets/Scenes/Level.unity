@@ -4773,6 +4773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarehouseDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5823593612892200562, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
@@ -9582,11 +9586,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.25, y: 2.75, z: 4.25}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.25, y: 2.75, z: 4.75}
   m_TimeToStationary: 0.5
 --- !u!64 &653594833
 MeshCollider:
@@ -11793,6 +11797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarehouseDoor2
       objectReference: {fileID: 0}
+    - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5823593612892200562, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
@@ -12324,6 +12332,10 @@ PrefabInstance:
     - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: m_Name
       value: WarehouseDoor3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -15193,11 +15205,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.25, y: 2.75, z: 4.25}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.25, y: 2.75, z: 4.75}
   m_TimeToStationary: 0.5
 --- !u!64 &963180585
 MeshCollider:
@@ -22436,6 +22448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarehouseDoor5
       objectReference: {fileID: 0}
+    - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5823593612892200562, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
@@ -27725,11 +27741,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.25, y: 2.75, z: 4.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.25, y: 2.75, z: 4.5}
   m_TimeToStationary: 0.5
 --- !u!64 &1675767185
 MeshCollider:
@@ -28706,6 +28722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarehouseDoor4
       objectReference: {fileID: 0}
+    - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5823593612892200562, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
@@ -29391,11 +29411,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.25, y: 3, z: 4.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.25, y: 3, z: 4.5}
   m_TimeToStationary: 0.5
 --- !u!64 &1961285923
 MeshCollider:
@@ -30457,11 +30477,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.25, y: 2.75, z: 4.25}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.25, y: 2.75, z: 4.75}
   m_TimeToStationary: 0.5
 --- !u!64 &1992155992
 MeshCollider:
@@ -35750,63 +35770,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1001 &3646042820682461375
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -45.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866257145924463799, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8603022933088165420, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
-      propertyPath: m_Name
-      value: Door
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -35818,7 +35781,6 @@ SceneRoots:
   - {fileID: 587237455}
   - {fileID: 1515164858}
   - {fileID: 15290062}
-  - {fileID: 3646042820682461375}
   - {fileID: 279341703}
   - {fileID: 1318364711}
   - {fileID: 762045064}
