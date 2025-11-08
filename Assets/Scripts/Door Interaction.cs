@@ -21,11 +21,11 @@ public class DoorInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (doorStatus.IsDoorClosed() && playerInside && Input.GetKeyDown(KeyCode.R))
+        if (doorStatus.IsDoorClosed() && playerInside && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(OpenDoor());
         }
-        else if (!doorStatus.IsDoorClosed() && playerInside && Input.GetKeyDown(KeyCode.R))
+        else if (!doorStatus.IsDoorClosed() && playerInside && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(CloseDoor());
         }

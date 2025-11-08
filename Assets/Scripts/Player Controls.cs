@@ -36,7 +36,7 @@ public class PlayerControls : MonoBehaviour
 
         if (horizontalInput > 0 || horizontalInput < 0)
         {
-            this.gameObject.transform.Rotate(new Vector3(0, horizontalInput * rotateSpeed, 0));
+            this.gameObject.transform.Rotate(new Vector3(0, horizontalInput * rotateSpeed * Time.deltaTime, 0));
         }
 
         float magnitude = Mathf.Clamp01(moveDirection.magnitude) * movementSpd;
