@@ -7,7 +7,10 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private List<Transform> waypoints;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform enemyBulletSpawn;
     [SerializeField] private float searchDuration;
+    [SerializeField] private float timer;
 
     private NavMeshAgent navAgent;
     private PlayerControls player;
@@ -19,10 +22,12 @@ public class EnemyAI : MonoBehaviour
     private Behaviours aiState = Behaviours.Patrol;
 
     private float distance;
+    private float searchTimer;
+    private float lastShot;
+
     private bool reversePath = false;
     private int curWaypoint = 0;
     private int waypointsCount;
-    private float searchTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +56,7 @@ public class EnemyAI : MonoBehaviour
                 if (enemyView.IsPlayerVisible())
                 {
                     ChaseTarget();
+                    ShootTarget();
                 }
                 else if (!enemyView.IsPlayerVisible())
                 {
@@ -131,5 +137,18 @@ public class EnemyAI : MonoBehaviour
             searchTimer -= Time.deltaTime;
             this.transform.Rotate(0, 80 * Time.deltaTime, 0);
         }
+    }
+
+    public void ShootTarget()
+    {
+        if (Time.time - lastShot < timer)
+        {
+            return;
+        }
+
+        lastShot = Time.time;
+        GameObject newProjectile = Instantiate(projectile, enemyBulletSpawn.position, enemyBulletSpawn.rotation);
+        newProjectile.GetComponent<Rigidbody>().velocity = transform.forward * 25;
+        Destroy(newProjectile, 5f);
     }
 }
