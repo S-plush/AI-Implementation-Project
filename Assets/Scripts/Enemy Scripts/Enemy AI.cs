@@ -8,17 +8,24 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private List<Transform> waypoints;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject gun;
     [SerializeField] private Transform enemyBulletSpawn;
     [SerializeField] private float searchDuration;
     [SerializeField] private float timer;
+    [SerializeField] private float generalRadius;
+    [SerializeField] private int enemyID;
+    [SerializeField] private bool isMultiAgent;
 
     private NavMeshAgent navAgent;
     private PlayerControls player;
     private Transform playerPosition;
     private EnemyFOV enemyView;
+    private MultiAgentManager multiAgentManager;
 
     private Vector3 destination;
-    private enum Behaviours { Patrol, Chase, Search };
+    private Vector3 lastPlayerLocation;
+    private Vector3 alertedArea;
+    private enum Behaviours { Patrol, Chase, Search, Alerted };
     private Behaviours aiState = Behaviours.Patrol;
 
     private float distance;
@@ -26,6 +33,9 @@ public class EnemyAI : MonoBehaviour
     private float lastShot;
 
     private bool reversePath = false;
+    [SerializeField] private bool isAlerted = false;
+    private bool hasAlerted = false;
+    private bool hasAlertedPosition = false;
     private int curWaypoint = 0;
     private int waypointsCount;
 
@@ -35,11 +45,24 @@ public class EnemyAI : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         enemyView = GetComponent<EnemyFOV>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        multiAgentManager = FindAnyObjectByType<MultiAgentManager>();
         waypointsCount = waypoints.Count;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (isMultiAgent)
+        {
+            MultiAgentBehaviours();
+        }
+        else if (!isMultiAgent)
+        {
+            SingeAgentBehaviours();
+        }
+    }
+
+    public void SingeAgentBehaviours()
     {
         switch (aiState)
         {
@@ -62,6 +85,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     searchTimer = searchDuration;
                     navAgent.SetDestination(destination);
+                    gun.transform.localEulerAngles = new Vector3(0, 0, 0);
                     aiState = Behaviours.Search;
                 }
 
@@ -73,9 +97,66 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Chase;
                 }
-                else if(searchTimer <= 0)
+                else if (searchTimer <= 0)
                 {
-                    aiState= Behaviours.Patrol;
+                    aiState = Behaviours.Patrol;
+                }
+
+                break;
+        }
+    }
+
+    public void MultiAgentBehaviours()
+    {
+        switch (aiState)
+        {
+            case Behaviours.Patrol:
+                Patrol();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    //multiAgentManager.RadioEnemies(enemyID);
+                    aiState = Behaviours.Chase;
+                }
+                else if (isAlerted)
+                {
+                    aiState = Behaviours.Alerted;
+                }
+
+                break;
+            case Behaviours.Alerted:
+                GoToGeneralTargetArea();
+                break;
+            case Behaviours.Chase:
+                if (enemyView.IsPlayerVisible())
+                {
+                    ChaseTarget();
+                    ShootTarget();
+                }
+                else if (!enemyView.IsPlayerVisible() /*&& !isAlerted*/)
+                {
+                    searchTimer = searchDuration;
+                    navAgent.SetDestination(destination);
+                    gun.transform.localEulerAngles = new Vector3(0, 0, 0);
+                    hasAlerted = false;
+                    aiState = Behaviours.Search;
+                }
+                //else if(!enemyView.IsPlayerVisible() && isAlerted)
+                //{
+                //    GoToGeneralTargetArea();
+                //}
+
+                break;
+            case Behaviours.Search:
+                SearchTarget();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    aiState = Behaviours.Chase;
+                }
+                else if (searchTimer <= 0)
+                {
+                    aiState = Behaviours.Patrol;
                 }
 
                 break;
@@ -125,8 +206,46 @@ public class EnemyAI : MonoBehaviour
     public void ChaseTarget()
     {
         destination = playerPosition.position;
+        lastPlayerLocation = destination;
+
+        //while the method is still used on the single agents, it only works with the multi-agent behaviours
+        if (!hasAlerted)
+        {
+            //this sends this enemy's ID and the player's position of where they were detected to the multi-agent manager 
+            multiAgentManager.RadioEnemies(enemyID, lastPlayerLocation);
+            hasAlerted = true;
+        }
+
         navAgent.SetDestination(destination);
         distance = Vector3.Distance(gameObject.transform.position, destination);
+    }
+
+    //this is for the other multi-agents that were notified of the player's position, but they'll go to a randomized general area of where that is
+    public void GoToGeneralTargetArea()
+    {
+        //this is so they don't keep randomizing the general area they'll go to
+        if (!hasAlertedPosition)
+        {
+            Vector3 generalArea = UnityEngine.Random.insideUnitSphere * generalRadius;
+            generalArea += lastPlayerLocation;
+            NavMeshHit hit;
+
+            if (NavMesh.SamplePosition(generalArea, out hit, generalRadius, NavMesh.AllAreas))
+            {
+                alertedArea = hit.position;
+            }
+
+            navAgent.SetDestination(alertedArea);
+            hasAlertedPosition = true;
+        }
+
+        if (navAgent.remainingDistance <= navAgent.stoppingDistance)
+        {
+            searchTimer = searchDuration;
+            isAlerted = false;
+            hasAlertedPosition = false;
+            aiState = Behaviours.Search;
+        }
     }
 
     //after player escapes sight, they'll go towards where the player was last seen and rotate until timer is done
@@ -141,6 +260,8 @@ public class EnemyAI : MonoBehaviour
 
     public void ShootTarget()
     {
+        gun.transform.LookAt(playerPosition.position);
+
         if (Time.time - lastShot < timer)
         {
             return;
@@ -150,5 +271,12 @@ public class EnemyAI : MonoBehaviour
         GameObject newProjectile = Instantiate(projectile, enemyBulletSpawn.position, enemyBulletSpawn.rotation);
         newProjectile.GetComponent<Rigidbody>().velocity = transform.forward * 25;
         Destroy(newProjectile, 5f);
+    }
+
+    //this is how the other agents will get notified of the player's general area
+    public void GetAlerted(Vector3 lastPlayerPos)
+    {
+        isAlerted = true;
+        lastPlayerLocation = lastPlayerPos;
     }
 }
