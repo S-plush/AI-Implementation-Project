@@ -47,7 +47,6 @@ public class EnemyFOV : MonoBehaviour
                 //then when inside fov cone, the enemy detects the player
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
                 {
-                    Debug.Log("what about here?");
                     playerVisable = true;
                 }
                 else
