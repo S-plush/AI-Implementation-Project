@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 5623431392901201710}
   m_Layer: 0
   m_Name: Single Agent Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,11 +287,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  projectile: {fileID: 4220653248424981488, guid: 10c5cc4f85c4b9b4f85fd79e06489c1d, type: 3}
+  doorWaypoints:
+  - {fileID: 0}
+  attack: {fileID: 4220653248424981488, guid: 10c5cc4f85c4b9b4f85fd79e06489c1d, type: 3}
   gun: {fileID: 3782206493216392326}
-  enemyBulletSpawn: {fileID: 3108269392280769172}
+  attackSpawn: {fileID: 3108269392280769172}
   searchDuration: 10
   timer: 3
+  generalRadius: 0
+  enemyID: 0
+  isMultiAgent: 0
+  isAdvMultiAgent: 0
+  isAlerted: 0
 --- !u!195 &5623431392901201710
 NavMeshAgent:
   m_ObjectHideFlags: 0

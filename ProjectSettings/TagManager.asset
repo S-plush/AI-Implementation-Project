@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TPView
   - Health Bar
+  - Enemy
+  - Trap Fill
   layers:
   - Default
   - TransparentFX

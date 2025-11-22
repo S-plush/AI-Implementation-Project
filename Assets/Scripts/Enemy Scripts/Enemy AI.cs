@@ -7,24 +7,28 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private List<Transform> waypoints;
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private List<Transform> doorWaypoints;
+    [SerializeField] private GameObject attack;
     [SerializeField] private GameObject gun;
-    [SerializeField] private Transform enemyBulletSpawn;
+    [SerializeField] private Transform attackSpawn;
     [SerializeField] private float searchDuration;
     [SerializeField] private float timer;
     [SerializeField] private float generalRadius;
     [SerializeField] private int enemyID;
     [SerializeField] private bool isMultiAgent;
+    [SerializeField] private bool isAdvMultiAgent;
 
     private NavMeshAgent navAgent;
     private PlayerControls player;
     private Transform playerPosition;
     private EnemyFOV enemyView;
     private MultiAgentManager multiAgentManager;
+    private SlowTrapManager slowTrapManager;
 
     private Vector3 destination;
     private Vector3 lastPlayerLocation;
     private Vector3 alertedArea;
+
     private enum Behaviours { Patrol, Chase, Search, Alerted };
     private Behaviours aiState = Behaviours.Patrol;
 
@@ -36,8 +40,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool isAlerted = false;
     private bool hasAlerted = false;
     private bool hasAlertedPosition = false;
+
     private int curWaypoint = 0;
     private int waypointsCount;
+    private int trapsPlacedCount;
 
     // Start is called before the first frame update
     void Start()
@@ -47,16 +53,21 @@ public class EnemyAI : MonoBehaviour
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         multiAgentManager = FindAnyObjectByType<MultiAgentManager>();
         waypointsCount = waypoints.Count;
+        slowTrapManager = FindAnyObjectByType<SlowTrapManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isMultiAgent)
+        if (isMultiAgent && !isAdvMultiAgent)
         {
             MultiAgentBehaviours();
         }
-        else if (!isMultiAgent)
+        else if(isAdvMultiAgent && !isMultiAgent)
+        {
+            AdvMultiAgentBehaviours();
+        }
+        else if (!isMultiAgent && !isAdvMultiAgent)
         {
             SingeAgentBehaviours();
         }
@@ -163,10 +174,72 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void AdvMultiAgentBehaviours()
+    {
+        switch (aiState)
+        {
+            case Behaviours.Patrol:
+                TrapperPatrol();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    //multiAgentManager.RadioEnemies(enemyID);
+                    aiState = Behaviours.Chase;
+                }
+                else if (isAlerted)
+                {
+                    aiState = Behaviours.Alerted;
+                }
+
+                break;
+            case Behaviours.Alerted:
+                GoToGeneralTargetArea();
+                break;
+            case Behaviours.Chase:
+                if (enemyView.IsPlayerVisible())
+                {
+                    ChaseTarget();
+                }
+                else if (!enemyView.IsPlayerVisible() /*&& !isAlerted*/)
+                {
+                    searchTimer = searchDuration;
+                    navAgent.SetDestination(destination);
+                    gun.transform.localEulerAngles = new Vector3(0, 0, 0);
+                    hasAlerted = false;
+                    aiState = Behaviours.Search;
+                }
+                //else if(!enemyView.IsPlayerVisible() && isAlerted)
+                //{
+                //    GoToGeneralTargetArea();
+                //}
+
+                break;
+            case Behaviours.Search:
+                SearchTarget();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    aiState = Behaviours.Chase;
+                }
+                else if (searchTimer <= 0)
+                {
+                    aiState = Behaviours.Patrol;
+                }
+
+                break;
+        }
+    }
+
     //this has the enemy follow waypoints
     public void Patrol()
     {
         distance = Vector3.Distance(gameObject.transform.position, waypoints[curWaypoint].position);
+
+        /*
+         * add else if where if the enemy isn't able to find the distance to its normal waypoint path due to the doors blocking it
+         * then for it to go through the array of door waypoints and find the closest one to it. Which should then make it go
+         * back to its original destination of that waypoint that it was going to
+         */
 
         if(distance > 2f)
         {
@@ -199,6 +272,32 @@ public class EnemyAI : MonoBehaviour
                     destination = waypoints[curWaypoint].position;
                 }
             }
+        }
+    }
+
+    //the adv multi-agent enemy will patrol at random points within its radius with a low % chance of them placing a trap
+    //unless it has to go to a door to open it then the %age will probably increase when it ge
+    public void TrapperPatrol()
+    {
+        if(navAgent.remainingDistance <= navAgent.stoppingDistance)
+        {
+            int randomNum = UnityEngine.Random.Range(1, 101);
+
+            if(randomNum <= 5)
+            {
+                PlaceTrap();
+            }
+
+            Vector3 randomDestination = UnityEngine.Random.insideUnitSphere * generalRadius;
+            randomDestination += navAgent.transform.position;
+            NavMeshHit hit;
+
+            if (NavMesh.SamplePosition(randomDestination, out hit, generalRadius, NavMesh.AllAreas))
+            {
+                destination = hit.position;
+            }
+
+            navAgent.SetDestination(destination);
         }
     }
 
@@ -268,9 +367,17 @@ public class EnemyAI : MonoBehaviour
         }
 
         lastShot = Time.time;
-        GameObject newProjectile = Instantiate(projectile, enemyBulletSpawn.position, enemyBulletSpawn.rotation);
-        newProjectile.GetComponent<Rigidbody>().velocity = transform.forward * 25;
-        Destroy(newProjectile, 5f);
+        GameObject bullet = Instantiate(attack, attackSpawn.position, attackSpawn.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = transform.forward * 25;
+        Destroy(bullet, 5f);
+    }
+
+    public void PlaceTrap()
+    {
+        if (slowTrapManager.GetTrapsCount() <= 6)
+        {
+            GameObject trap = Instantiate(attack, attackSpawn.position, attackSpawn.rotation);
+        }
     }
 
     //this is how the other agents will get notified of the player's general area
@@ -279,4 +386,10 @@ public class EnemyAI : MonoBehaviour
         isAlerted = true;
         lastPlayerLocation = lastPlayerPos;
     }
+
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(transform.position, generalRadius);
+    //}
 }
