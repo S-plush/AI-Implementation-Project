@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public class DoorInteraction : MonoBehaviour
 {
@@ -37,38 +38,40 @@ public class DoorInteraction : MonoBehaviour
     public IEnumerator CloseDoor()
     {
         doorStatus.OpenDoor();
-        Vector3 targetPosition = door.transform.position + closedDoorPosition;
-        Vector3 startingPosition = door.transform.position;
+        Vector3 targetPosition = closedDoorPosition;
+        Vector3 startingPosition = door.transform.localPosition;
         float movingTime = .5f;
         float elapsedTime = 0f;
 
         while (elapsedTime <= movingTime)
         {
             float openingProgress = elapsedTime / movingTime;
-            door.transform.position = Vector3.Lerp(startingPosition, targetPosition, openingProgress);
+            door.transform.localPosition = Vector3.Lerp(startingPosition, targetPosition, openingProgress);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        door.transform.localPosition = targetPosition;
         yield return new WaitForSeconds(5f);
     }
 
     public IEnumerator OpenDoor()
     {
         doorStatus.OpenDoor();
-        Vector3 targetPosition = door.transform.position + openDoorPosition;
-        Vector3 startingPosition = door.transform.position;
+        Vector3 targetPosition = openDoorPosition;
+        Vector3 startingPosition = door.transform.localPosition;
         float movingTime = .5f;
         float elapsedTime = 0f;
 
         while(elapsedTime <= movingTime)
         {
             float openingProgress = elapsedTime / movingTime;
-            door.transform.position = Vector3.Lerp(startingPosition, targetPosition, openingProgress);
+            door.transform.localPosition = Vector3.Lerp(startingPosition, targetPosition, openingProgress);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        door.transform.localPosition = targetPosition;
         yield return new WaitForSeconds(5f);
     }
 

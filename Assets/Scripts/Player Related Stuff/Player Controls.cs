@@ -71,4 +71,9 @@ public class PlayerControls : MonoBehaviour
 
         return velocity;
     }
+
+    public void ChangeMovementSpd(float newSpd)
+    {
+        movementSpd = newSpd;
+    }
 }

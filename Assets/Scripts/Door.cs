@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private bool doorClosed = true;
+    //public ClosedDoorManager closedDoorManager;
+    [SerializeField] private GameObject doorAccess1;
+    [SerializeField] private GameObject doorAccess2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool doorClosed = false;
+    private bool beginning = true;
+    private bool beginning2 = true;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        //closedDoorManager = FindAnyObjectByType<ClosedDoorManager>();
     }
 
     public bool IsDoorClosed()
@@ -34,10 +33,24 @@ public class Door : MonoBehaviour
     {
         if (!doorClosed)
         {
+            if (!beginning)
+            {
+                doorAccess1.SetActive(true);
+                doorAccess2.SetActive(true);
+            }
+
+            beginning = false;
             doorClosed = true;
         }
         else if (doorClosed)
         {
+            if (!beginning2)
+            {
+                doorAccess1.SetActive(false);
+                doorAccess2.SetActive(false);
+            }
+
+            beginning2 = false;
             doorClosed = false;
         }
     }
