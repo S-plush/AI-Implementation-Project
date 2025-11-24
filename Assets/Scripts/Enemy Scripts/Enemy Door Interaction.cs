@@ -53,17 +53,7 @@ public class EnemyDoorInteraction : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             enemyInside = true;
-            Debug.Log("does this turn true");
-
-            //if (Time.time - enemyLastInteraction < timer)
-            //{
-            //    return;
-            //}
-
-            //counter++;
-            //enemyLastInteraction = Time.time;
-
-            //Debug.Log(counter);
+            //Debug.Log("does this turn true");
         }
     }
 

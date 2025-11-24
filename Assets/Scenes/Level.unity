@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 9192479}
   - component: {fileID: 9192478}
   - component: {fileID: 9192477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 28343153}
   - component: {fileID: 28343152}
   - component: {fileID: 28343151}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 61229514}
   - component: {fileID: 61229513}
   - component: {fileID: 61229512}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: warehouse2BigContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2467,7 +2467,7 @@ GameObject:
   - component: {fileID: 91743592}
   - component: {fileID: 91743591}
   - component: {fileID: 91743590}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WareHouse2OtherWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2820,7 +2820,7 @@ GameObject:
   - component: {fileID: 104237580}
   - component: {fileID: 104237579}
   - component: {fileID: 104237578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Box3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3338,7 +3338,7 @@ GameObject:
   - component: {fileID: 175468315}
   - component: {fileID: 175468314}
   - component: {fileID: 175468313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3691,7 +3691,7 @@ GameObject:
   - component: {fileID: 219883927}
   - component: {fileID: 219883926}
   - component: {fileID: 219883925}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ramp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4245,7 +4245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &238973410
 Transform:
   m_ObjectHideFlags: 0
@@ -5043,7 +5043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &268551188
 Transform:
   m_ObjectHideFlags: 0
@@ -5173,7 +5173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6868284511361486703, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.68
+      value: -1.84
       objectReference: {fileID: 0}
     - target: {fileID: 6934827520946207756, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: door
@@ -5638,7 +5638,7 @@ GameObject:
   - component: {fileID: 333213991}
   - component: {fileID: 333213990}
   - component: {fileID: 333213989}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Container2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6925,7 +6925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &461178725
 Transform:
   m_ObjectHideFlags: 0
@@ -7120,7 +7120,7 @@ GameObject:
   - component: {fileID: 529361293}
   - component: {fileID: 529361292}
   - component: {fileID: 529361291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OutsideBox1SmallContainer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7473,7 +7473,7 @@ GameObject:
   - component: {fileID: 531580997}
   - component: {fileID: 531580996}
   - component: {fileID: 531580995}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7826,7 +7826,7 @@ GameObject:
   - component: {fileID: 548171209}
   - component: {fileID: 548171208}
   - component: {fileID: 548171207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8650,7 +8650,7 @@ GameObject:
   - component: {fileID: 614796690}
   - component: {fileID: 614796689}
   - component: {fileID: 614796688}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9003,7 +9003,7 @@ GameObject:
   - component: {fileID: 616595490}
   - component: {fileID: 616595489}
   - component: {fileID: 616595488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9782,7 +9782,7 @@ GameObject:
   - component: {fileID: 642287745}
   - component: {fileID: 642287744}
   - component: {fileID: 642287743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OutsideBox1SmallContainer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10854,6 +10854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315909ca106b3a242951043db520de8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAccess1: {fileID: 1420995155}
+  doorAccess2: {fileID: 268551187}
 --- !u!208 &653594832
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -11182,7 +11184,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 436274834}
-  m_VersionIndex: 3803
+  m_VersionIndex: 3812
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13198,7 +13200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630753483889299575, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.13
+      value: -5.063
       objectReference: {fileID: 0}
     - target: {fileID: 4688660510366376179, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13651,6 +13653,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3630753483889299575, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.88
+      objectReference: {fileID: 0}
     - target: {fileID: 4688660510366376179, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
@@ -13673,7 +13679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6868284511361486703, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.33
+      value: -2.43
       objectReference: {fileID: 0}
     - target: {fileID: 6934827520946207756, guid: 1a450756ab4fbb64f944199de0e704b6, type: 3}
       propertyPath: door
@@ -14043,7 +14049,7 @@ GameObject:
   - component: {fileID: 858992567}
   - component: {fileID: 858992566}
   - component: {fileID: 858992565}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AboveDoor5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14396,7 +14402,7 @@ GameObject:
   - component: {fileID: 873377924}
   - component: {fileID: 873377923}
   - component: {fileID: 873377922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: warehousewall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15572,7 +15578,7 @@ GameObject:
   - component: {fileID: 916593083}
   - component: {fileID: 916593082}
   - component: {fileID: 916593081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15925,7 +15931,7 @@ GameObject:
   - component: {fileID: 918245485}
   - component: {fileID: 918245484}
   - component: {fileID: 918245483}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16400,7 +16406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &946184737
 Transform:
   m_ObjectHideFlags: 0
@@ -16841,6 +16847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315909ca106b3a242951043db520de8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAccess1: {fileID: 1147386781}
+  doorAccess2: {fileID: 1367504687}
 --- !u!208 &963180584
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -17169,7 +17177,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1670152352}
-  m_VersionIndex: 3803
+  m_VersionIndex: 3812
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -17425,7 +17433,7 @@ GameObject:
   - component: {fileID: 1004772484}
   - component: {fileID: 1004772483}
   - component: {fileID: 1004772482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: warehousewall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18484,6 +18492,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 811005091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1007922228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5820214171046632829, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+  m_PrefabInstance: {fileID: 1862904687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1011921171
 GameObject:
   m_ObjectHideFlags: 0
@@ -18498,7 +18511,7 @@ GameObject:
   - component: {fileID: 1011921174}
   - component: {fileID: 1011921173}
   - component: {fileID: 1011921172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WBox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19590,7 +19603,7 @@ GameObject:
   - component: {fileID: 1074163767}
   - component: {fileID: 1074163766}
   - component: {fileID: 1074163765}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OutsideBox1SmallContainer2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20108,7 +20121,7 @@ GameObject:
   - component: {fileID: 1080772948}
   - component: {fileID: 1080772947}
   - component: {fileID: 1080772946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OutsideBox1SmallContainer2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21252,39 +21265,39 @@ PrefabInstance:
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 238973410}
+      objectReference: {fileID: 238973409}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1167479055}
+      objectReference: {fileID: 1167479054}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 461178725}
+      objectReference: {fileID: 461178724}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1524420191}
+      objectReference: {fileID: 1524420190}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1147386782}
+      objectReference: {fileID: 1147386781}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1367504688}
+      objectReference: {fileID: 1367504687}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1420995156}
+      objectReference: {fileID: 1420995155}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[7]
       value: 
-      objectReference: {fileID: 268551188}
+      objectReference: {fileID: 268551187}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[8]
       value: 
-      objectReference: {fileID: 946184737}
+      objectReference: {fileID: 946184736}
     - target: {fileID: 128854256630467653, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: player
       value: 
@@ -21336,7 +21349,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5820214171046632829, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1154222622}
   m_SourcePrefab: {fileID: 100100000, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
 --- !u!4 &1117534461 stripped
 Transform:
@@ -21358,7 +21374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1147386782
 Transform:
   m_ObjectHideFlags: 0
@@ -21673,6 +21689,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1154222615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5820214171046632829, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+  m_PrefabInstance: {fileID: 1117534460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1154222622
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154222615}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!43 &1157849328
 Mesh:
   m_ObjectHideFlags: 0
@@ -21889,7 +21937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1167479055
 Transform:
   m_ObjectHideFlags: 0
@@ -21919,7 +21967,7 @@ GameObject:
   - component: {fileID: 1179129165}
   - component: {fileID: 1179129164}
   - component: {fileID: 1179129163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22717,7 +22765,7 @@ GameObject:
   - component: {fileID: 1242793806}
   - component: {fileID: 1242793805}
   - component: {fileID: 1242793804}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LongBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23501,7 +23549,7 @@ GameObject:
   - component: {fileID: 1291496004}
   - component: {fileID: 1291496003}
   - component: {fileID: 1291496002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HallwayWall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23914,39 +23962,39 @@ PrefabInstance:
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 238973410}
+      objectReference: {fileID: 238973409}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1167479055}
+      objectReference: {fileID: 1167479054}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 461178725}
+      objectReference: {fileID: 461178724}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1524420191}
+      objectReference: {fileID: 1524420190}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1147386782}
+      objectReference: {fileID: 1147386781}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1367504688}
+      objectReference: {fileID: 1367504687}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1420995156}
+      objectReference: {fileID: 1420995155}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[7]
       value: 
-      objectReference: {fileID: 268551188}
+      objectReference: {fileID: 268551187}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[8]
       value: 
-      objectReference: {fileID: 946184737}
+      objectReference: {fileID: 946184736}
     - target: {fileID: 128854256630467653, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: player
       value: 
@@ -25631,7 +25679,7 @@ GameObject:
   - component: {fileID: 1341486742}
   - component: {fileID: 1341486741}
   - component: {fileID: 1341486740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WareHouse2Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26944,7 +26992,7 @@ GameObject:
   - component: {fileID: 1345507907}
   - component: {fileID: 1345507906}
   - component: {fileID: 1345507905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27298,7 +27346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1367504688
 Transform:
   m_ObjectHideFlags: 0
@@ -28462,7 +28510,7 @@ GameObject:
   - component: {fileID: 1418183420}
   - component: {fileID: 1418183419}
   - component: {fileID: 1418183418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28981,7 +29029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1420995156
 Transform:
   m_ObjectHideFlags: 0
@@ -29599,7 +29647,7 @@ GameObject:
   - component: {fileID: 1509320900}
   - component: {fileID: 1509320899}
   - component: {fileID: 1509320898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OutsideBox1SmallContainer4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29988,7 +30036,7 @@ GameObject:
   - component: {fileID: 1516933542}
   - component: {fileID: 1516933541}
   - component: {fileID: 1516933540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ramp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30342,7 +30390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1524420191
 Transform:
   m_ObjectHideFlags: 0
@@ -30821,7 +30869,7 @@ GameObject:
   - component: {fileID: 1630710689}
   - component: {fileID: 1630710688}
   - component: {fileID: 1630710687}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Container1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32298,7 +32346,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 551080678}
-  m_VersionIndex: 3569
+  m_VersionIndex: 3578
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -32315,6 +32363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315909ca106b3a242951043db520de8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAccess1: {fileID: 238973409}
+  doorAccess2: {fileID: 1167479054}
 --- !u!43 &1695794592
 Mesh:
   m_ObjectHideFlags: 0
@@ -32494,7 +32544,7 @@ GameObject:
   - component: {fileID: 1742204320}
   - component: {fileID: 1742204319}
   - component: {fileID: 1742204318}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33681,7 +33731,7 @@ GameObject:
   - component: {fileID: 1822289082}
   - component: {fileID: 1822289081}
   - component: {fileID: 1822289080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34260,39 +34310,39 @@ PrefabInstance:
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 238973410}
+      objectReference: {fileID: 238973409}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1167479055}
+      objectReference: {fileID: 1167479054}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 461178725}
+      objectReference: {fileID: 461178724}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1524420191}
+      objectReference: {fileID: 1524420190}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1147386782}
+      objectReference: {fileID: 1147386781}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1367504688}
+      objectReference: {fileID: 1367504687}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1420995156}
+      objectReference: {fileID: 1420995155}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[7]
       value: 
-      objectReference: {fileID: 268551188}
+      objectReference: {fileID: 268551187}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[8]
       value: 
-      objectReference: {fileID: 946184737}
+      objectReference: {fileID: 946184736}
     - target: {fileID: 128854256630467653, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: player
       value: 
@@ -34344,13 +34394,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5820214171046632829, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1862904695}
   m_SourcePrefab: {fileID: 100100000, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
 --- !u!4 &1862904688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4636462440252854661, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
   m_PrefabInstance: {fileID: 1862904687}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1862904695
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007922228}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1868555855
 GameObject:
   m_ObjectHideFlags: 0
@@ -34561,7 +34641,7 @@ GameObject:
   - component: {fileID: 1899994542}
   - component: {fileID: 1899994541}
   - component: {fileID: 1899994540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WBox3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35115,6 +35195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315909ca106b3a242951043db520de8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAccess1: {fileID: 461178724}
+  doorAccess2: {fileID: 1524420190}
 --- !u!208 &1961285922
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -35443,7 +35525,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1157849328}
-  m_VersionIndex: 3645
+  m_VersionIndex: 3654
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -35627,7 +35709,7 @@ GameObject:
   - component: {fileID: 1972633288}
   - component: {fileID: 1972633287}
   - component: {fileID: 1972633286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HallwayWall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36131,6 +36213,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1991986588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5820214171046632829, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+  m_PrefabInstance: {fileID: 4029128860475976772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1991986595
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991986588}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1992155988
 GameObject:
   m_ObjectHideFlags: 0
@@ -36181,6 +36295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315909ca106b3a242951043db520de8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAccess1: {fileID: 946184736}
+  doorAccess2: {fileID: 0}
 --- !u!208 &1992155991
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -36509,7 +36625,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1153341613}
-  m_VersionIndex: 3803
+  m_VersionIndex: 3812
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -36755,7 +36871,7 @@ GameObject:
   - component: {fileID: 2029399390}
   - component: {fileID: 2029399389}
   - component: {fileID: 2029399388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LongBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37423,7 +37539,7 @@ GameObject:
   - component: {fileID: 2044702033}
   - component: {fileID: 2044702032}
   - component: {fileID: 2044702031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WareHouse3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38736,7 +38852,7 @@ GameObject:
   - component: {fileID: 2071602057}
   - component: {fileID: 2071602056}
   - component: {fileID: 2071602055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallContainer7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39089,7 +39205,7 @@ GameObject:
   - component: {fileID: 2071645054}
   - component: {fileID: 2071645053}
   - component: {fileID: 2071645052}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OutsideBox1SmallContainer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40455,7 +40571,7 @@ GameObject:
   - component: {fileID: 2120640658}
   - component: {fileID: 2120640657}
   - component: {fileID: 2120640656}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WBox4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41161,7 +41277,7 @@ GameObject:
   - component: {fileID: 2130419851}
   - component: {fileID: 2130419850}
   - component: {fileID: 2130419849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41514,7 +41630,7 @@ GameObject:
   - component: {fileID: 2142647951}
   - component: {fileID: 2142647950}
   - component: {fileID: 2142647949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ramp3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41866,6 +41982,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+      propertyPath: generalRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+      propertyPath: isAdvMultiAgent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -41908,39 +42032,39 @@ PrefabInstance:
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 238973410}
+      objectReference: {fileID: 238973409}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1167479055}
+      objectReference: {fileID: 1167479054}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 461178725}
+      objectReference: {fileID: 461178724}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1524420191}
+      objectReference: {fileID: 1524420190}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1147386782}
+      objectReference: {fileID: 1147386781}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1367504688}
+      objectReference: {fileID: 1367504687}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1420995156}
+      objectReference: {fileID: 1420995155}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[7]
       value: 
-      objectReference: {fileID: 268551188}
+      objectReference: {fileID: 268551187}
     - target: {fileID: 25321989041171108, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: doorWaypoints.Array.data[8]
       value: 
-      objectReference: {fileID: 946184737}
+      objectReference: {fileID: 946184736}
     - target: {fileID: 128854256630467653, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
       propertyPath: player
       value: 
@@ -41992,7 +42116,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5820214171046632829, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1991986595}
   m_SourcePrefab: {fileID: 100100000, guid: 12955d1523675b8418a4d04a907020a2, type: 3}
 --- !u!1001 &4707163614363239687
 PrefabInstance:

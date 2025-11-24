@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private List<Transform> waypoints;
-    [SerializeField] private List<Transform> doorWaypoints;
+    [SerializeField] private List<GameObject> doorWaypoints;
     [SerializeField] private GameObject attack;
     [SerializeField] private GameObject gun;
     [SerializeField] private Transform attackSpawn;
@@ -126,7 +126,6 @@ public class EnemyAI : MonoBehaviour
 
                 if (enemyView.IsPlayerVisible())
                 {
-                    //multiAgentManager.RadioEnemies(enemyID);
                     aiState = Behaviours.Chase;
                 }
                 else if (isAlerted)
@@ -144,7 +143,7 @@ public class EnemyAI : MonoBehaviour
                     ChaseTarget();
                     ShootTarget();
                 }
-                else if (!enemyView.IsPlayerVisible() /*&& !isAlerted*/)
+                else if (!enemyView.IsPlayerVisible())
                 {
                     searchTimer = searchDuration;
                     navAgent.SetDestination(destination);
@@ -152,10 +151,6 @@ public class EnemyAI : MonoBehaviour
                     hasAlerted = false;
                     aiState = Behaviours.Search;
                 }
-                //else if(!enemyView.IsPlayerVisible() && isAlerted)
-                //{
-                //    GoToGeneralTargetArea();
-                //}
 
                 break;
             case Behaviours.Search:
@@ -183,7 +178,6 @@ public class EnemyAI : MonoBehaviour
 
                 if (enemyView.IsPlayerVisible())
                 {
-                    //multiAgentManager.RadioEnemies(enemyID);
                     aiState = Behaviours.Chase;
                 }
                 else if (isAlerted)
@@ -194,13 +188,14 @@ public class EnemyAI : MonoBehaviour
                 break;
             case Behaviours.Alerted:
                 GoToGeneralTargetArea();
+
                 break;
             case Behaviours.Chase:
                 if (enemyView.IsPlayerVisible())
                 {
                     ChaseTarget();
                 }
-                else if (!enemyView.IsPlayerVisible() /*&& !isAlerted*/)
+                else if (!enemyView.IsPlayerVisible())
                 {
                     searchTimer = searchDuration;
                     navAgent.SetDestination(destination);
@@ -208,10 +203,6 @@ public class EnemyAI : MonoBehaviour
                     hasAlerted = false;
                     aiState = Behaviours.Search;
                 }
-                //else if(!enemyView.IsPlayerVisible() && isAlerted)
-                //{
-                //    GoToGeneralTargetArea();
-                //}
 
                 break;
             case Behaviours.Search:
@@ -233,17 +224,18 @@ public class EnemyAI : MonoBehaviour
     //this has the enemy follow waypoints
     public void Patrol()
     {
+        destination = waypoints[curWaypoint].position;
+        //distance = Vector3.Distance(gameObject.transform.position, waypoints[curWaypoint].position);
+
+        if (!PathReachable(destination))
+        {
+            GoToClosestDoor();
+        }
+
         distance = Vector3.Distance(gameObject.transform.position, waypoints[curWaypoint].position);
 
-        /*
-         * add else if where if the enemy isn't able to find the distance to its normal waypoint path due to the doors blocking it
-         * then for it to go through the array of door waypoints and find the closest one to it. Which should then make it go
-         * back to its original destination of that waypoint that it was going to
-         */
-
-        if(distance > 2f)
+        if (distance > 2f)
         {
-            destination = waypoints[curWaypoint].position;
             navAgent.SetDestination(destination);
         }
         else
@@ -279,7 +271,12 @@ public class EnemyAI : MonoBehaviour
     //unless it has to go to a door to open it then the %age will probably increase when it ge
     public void TrapperPatrol()
     {
-        if(navAgent.remainingDistance <= navAgent.stoppingDistance)
+        if (!PathReachable(destination))
+        {
+            GoToClosestDoor();
+        }
+
+        if (navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
             int randomNum = UnityEngine.Random.Range(1, 101);
 
@@ -308,7 +305,7 @@ public class EnemyAI : MonoBehaviour
         lastPlayerLocation = destination;
 
         //while the method is still used on the single agents, it only works with the multi-agent behaviours
-        if (!hasAlerted)
+        if (!hasAlerted && (isAdvMultiAgent || isMultiAgent))
         {
             //this sends this enemy's ID and the player's position of where they were detected to the multi-agent manager 
             multiAgentManager.RadioEnemies(enemyID, lastPlayerLocation);
@@ -340,6 +337,16 @@ public class EnemyAI : MonoBehaviour
 
         if (navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
+            if (isAdvMultiAgent)
+            {
+                int randomNum = UnityEngine.Random.Range(1, 101);
+
+                if (randomNum <= 95)
+                {
+                    PlaceTrap();
+                }
+            }
+
             searchTimer = searchDuration;
             isAlerted = false;
             hasAlertedPosition = false;
@@ -380,6 +387,69 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public bool PathReachable(Vector3 destination)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (!NavMesh.CalculatePath(transform.position, destination, navAgent.areaMask, path) || path.status != NavMeshPathStatus.PathComplete)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void GoToClosestDoor()
+    {
+        float closestDoorDistance = float.MaxValue;
+        NavMeshPath path = new NavMeshPath();
+        NavMeshPath shortestPath = new NavMeshPath();
+
+        for (int i = 0; i < doorWaypoints.Count; i++)
+        {
+            if (doorWaypoints[i] == null || doorWaypoints[i].activeInHierarchy == false)
+            {
+                continue;
+            }
+
+            path = new NavMeshPath();
+
+            if (NavMesh.CalculatePath(transform.position, doorWaypoints[i].transform.position, navAgent.areaMask, path) && path.status == NavMeshPathStatus.PathComplete)
+            {
+                float distance = 0f;
+
+                for (int j = 1; j < path.corners.Length; j++)
+                {
+                    distance += Vector3.Distance(path.corners[j - 1], path.corners[j]);
+                }
+
+                if (distance < closestDoorDistance)
+                {
+                    closestDoorDistance = distance;
+                    shortestPath = path;
+                }
+            }
+        }
+
+        if (shortestPath != null)
+        {
+            navAgent.SetPath(shortestPath);
+            return;
+        }
+
+        if (isAdvMultiAgent)
+        {
+            int randomNum = UnityEngine.Random.Range(1, 101);
+
+            if (randomNum <= 50)
+            {
+                PlaceTrap();
+            }
+        }
+    }
+
     //this is how the other agents will get notified of the player's general area
     public void GetAlerted(Vector3 lastPlayerPos)
     {
@@ -387,9 +457,9 @@ public class EnemyAI : MonoBehaviour
         lastPlayerLocation = lastPlayerPos;
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(transform.position, generalRadius);
-    //}
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, generalRadius);
+    }
 }
