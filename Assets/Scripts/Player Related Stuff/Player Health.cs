@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator GameOver()
     {
         gameOver.Play("Fade In");
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.5f);
         Time.timeScale = 0.0f;
     }
 }
