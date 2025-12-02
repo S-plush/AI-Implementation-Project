@@ -29,7 +29,7 @@ public class ExitDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(keyCount == maxKeyCount)
+        if(keyCount == maxKeyCount || Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("exit door is now open");
             StartCoroutine(OpenExitDoor());

@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
     private Vector3 lastPlayerLocation;
     private Vector3 alertedArea;
 
-    private enum Behaviours { Patrol, Chase, Search, Alerted };
+    private enum Behaviours { Patrol, Chase, Search, Alerted, Standby };
     private Behaviours aiState = Behaviours.Patrol;
 
     private float distance;
@@ -84,6 +84,10 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Chase;
                 }
+                else if (enemyView.IsFriendlyVisible())
+                {
+                    aiState = Behaviours.Standby;
+                }
 
                 break;
             case Behaviours.Chase:
@@ -109,6 +113,17 @@ public class EnemyAI : MonoBehaviour
                     aiState = Behaviours.Chase;
                 }
                 else if (searchTimer <= 0)
+                {
+                    aiState = Behaviours.Patrol;
+                }
+
+                break;
+            case Behaviours.Standby:
+                if (enemyView.IsFriendlyVisible())
+                {
+                    navAgent.SetDestination(gameObject.transform.position);
+                }
+                else if (!enemyView.IsFriendlyVisible())
                 {
                     aiState = Behaviours.Patrol;
                 }

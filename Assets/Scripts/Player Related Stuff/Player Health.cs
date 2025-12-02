@@ -47,6 +47,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
     public IEnumerator GameOver()
     {
         gameOver.Play("Fade In");

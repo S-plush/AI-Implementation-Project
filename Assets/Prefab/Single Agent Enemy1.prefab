@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3108269392280769172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 9038794683245639171}
   - component: {fileID: 2968215286714129044}
   - component: {fileID: 5262602553720969647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 128854256630467653}
   - component: {fileID: 25321989041171108}
   - component: {fileID: 5623431392901201710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Single Agent Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -263,6 +263,9 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  friendlyMask:
+    serializedVersion: 2
+    m_Bits: 256
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
@@ -270,6 +273,7 @@ MonoBehaviour:
   radius: 6.5
   player: {fileID: 0}
   playerVisable: 0
+  friendlyVisable: 0
 --- !u!114 &25321989041171108
 MonoBehaviour:
   m_ObjectHideFlags: 0

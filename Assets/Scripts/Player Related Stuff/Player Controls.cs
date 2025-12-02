@@ -8,6 +8,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float movementSpd;
 
     private CharacterController charController;
+    private PlayerHealth playerHealth;
+    private ExitTrigger exitTrigger;
     private float ySpeed;
 
     public float rotateSpeed;
@@ -15,6 +17,8 @@ public class PlayerControls : MonoBehaviour
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
+        playerHealth = GetComponent<PlayerHealth>();
+        exitTrigger = FindAnyObjectByType<ExitTrigger>();
     }
 
     // Start is called before the first frame update
@@ -26,12 +30,15 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (playerHealth.GetCurrentHealth() != 0 && !exitTrigger.HasExited()) 
         {
-            SceneManager.LoadScene("Title Screen");
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("Title Screen");
+            }
 
-        Movement();
+            Movement();
+        }
     }
 
     public void Movement()

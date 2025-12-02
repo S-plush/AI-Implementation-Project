@@ -5,12 +5,14 @@ using UnityEngine;
 public class EnemyFOV : MonoBehaviour
 {
     [SerializeField] private LayerMask targetMask;
+    [SerializeField] private LayerMask friendlyMask;
     [SerializeField] private LayerMask obstacleMask;
 
     [Range(0, 360)] public float angle;
     public float radius;
     public GameObject player;
     public bool playerVisable;
+    public bool friendlyVisable;
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +35,12 @@ public class EnemyFOV : MonoBehaviour
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+        Collider[] friendlyRangeChecks = Physics.OverlapSphere(transform.position, radius, friendlyMask);
 
         if(rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
+
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
             //this checks to see if the player is within the fov cone
@@ -48,6 +52,7 @@ public class EnemyFOV : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
                 {
                     playerVisable = true;
+                    friendlyVisable = false;
                 }
                 else
                 {
@@ -63,11 +68,55 @@ public class EnemyFOV : MonoBehaviour
         {
             playerVisable = false;
         }
+
+        if (friendlyRangeChecks.Length != 0)
+        {
+            friendlyVisable = false;
+
+            for (int i = 0; i < friendlyRangeChecks.Length; i++)
+            {
+                if (friendlyRangeChecks[i].gameObject == this.gameObject)
+                {
+                    continue;
+                }
+
+                Transform friendly = friendlyRangeChecks[i].transform;
+                Vector3 directionToFriendly = (friendly.position - transform.position).normalized;
+
+                if (Vector3.Angle(transform.forward, directionToFriendly) < angle / 2)
+                {
+                    float distanceToFriendly = Vector3.Distance(transform.position, friendly.position);
+
+                    if (!Physics.Raycast(transform.position, directionToFriendly, distanceToFriendly, obstacleMask))
+                    {
+                        friendlyVisable = true;
+                        break;
+                    }
+                    //else
+                    //{
+                    //    friendlyVisable = false;
+                    //}
+                }
+                //else
+                //{
+                //    friendlyVisable = false;
+                //}
+            }
+        }
+        else if (friendlyVisable)
+        {
+            friendlyVisable = false;
+        }
     }
 
     public bool IsPlayerVisible()
     {
         return playerVisable;
+    }
+
+    public bool IsFriendlyVisible()
+    {
+        return friendlyVisable;
     }
 
     public void OnDrawGizmos()
