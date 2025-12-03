@@ -40,6 +40,7 @@ public class SlowTrap : MonoBehaviour
 
         if (isHolding)
         {
+            player.HideHoldE();
             holdTimer += Time.deltaTime;
             fillCircle.fillAmount = holdTimer / holdDuration;
 
@@ -48,6 +49,7 @@ public class SlowTrap : MonoBehaviour
                 ResetHold();
                 slowTrapManager.RemoveFromList(gameObject);
                 player.ChangeMovementSpd(5f);
+                player.HideHoldE();
                 Destroy(gameObject);
             }
         }
@@ -58,6 +60,7 @@ public class SlowTrap : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInside = true;
+            player.ShowHoldE();
             player.ChangeMovementSpd(2.5f);
         }
     }
@@ -67,6 +70,7 @@ public class SlowTrap : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInside = false;
+            player.HideHoldE();
             player.ChangeMovementSpd(5f);
         }
     }
@@ -74,6 +78,12 @@ public class SlowTrap : MonoBehaviour
     public void ResetHold()
     {
         isHolding = false;
+
+        if (playerInside)
+        {
+            player.ShowHoldE();
+        }
+
         holdTimer = 0f;
         fillCircle.fillAmount = 0f;
     }

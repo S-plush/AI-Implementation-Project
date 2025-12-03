@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private float movementSpd;
+    [SerializeField] private GameObject holdEPopup;
+    [SerializeField] private GameObject pressEPopup;
 
     private CharacterController charController;
     private PlayerHealth playerHealth;
@@ -88,5 +90,25 @@ public class PlayerControls : MonoBehaviour
     public void ChangeMovementSpd(float newSpd)
     {
         movementSpd = newSpd;
+    }
+
+    public void ShowHoldE()
+    {
+        holdEPopup.SetActive(true);
+    }
+
+    public void HideHoldE()
+    {
+        holdEPopup.SetActive(false);
+    }
+
+    public void ShowPressE()
+    {
+        pressEPopup.SetActive(true);
+    }
+
+    public void HidePressE()
+    {
+        pressEPopup.SetActive(false);
     }
 }
