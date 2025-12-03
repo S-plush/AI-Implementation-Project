@@ -7,16 +7,19 @@ using UnityEngine.ProBuilder.Shapes;
 public class DoorInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject door;
+
     [SerializeField] private Vector3 closedDoorPosition;
     [SerializeField] private Vector3 openDoorPosition;
 
     private Door doorStatus;
+    private PlayerControls player;
 
     private bool playerInside = false;
 
     private void Start()
     {
         doorStatus = door.GetComponent<Door>();
+        player = FindAnyObjectByType<PlayerControls>();
         StartCoroutine(OpenDoor());
     }
 
@@ -80,6 +83,7 @@ public class DoorInteraction : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             playerInside = true;
+            player.ShowPressE();
         }
     }
 
@@ -88,6 +92,7 @@ public class DoorInteraction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInside = false;
+            player.HidePressE();
         }
     }
 }
