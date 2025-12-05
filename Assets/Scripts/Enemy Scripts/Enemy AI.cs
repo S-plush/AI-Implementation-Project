@@ -24,13 +24,14 @@ public class EnemyAI : MonoBehaviour
     private EnemyFOV enemyView;
     private MultiAgentManager multiAgentManager;
     private SlowTrapManager slowTrapManager;
+    //[SerializeField] private AlertStatusUI alertStatusUI;
 
     private Vector3 destination;
     private Vector3 lastPlayerLocation;
     private Vector3 alertedArea;
 
-    private enum Behaviours { Patrol, Chase, Search, Alerted, Standby };
-    private Behaviours aiState = Behaviours.Patrol;
+    [SerializeField] private enum Behaviours { Patrol, Chase, Search, Alerted, Standby };
+    [SerializeField] private Behaviours aiState = Behaviours.Patrol;
 
     private float distance;
     private float searchTimer;
@@ -52,6 +53,7 @@ public class EnemyAI : MonoBehaviour
         enemyView = GetComponent<EnemyFOV>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         multiAgentManager = FindAnyObjectByType<MultiAgentManager>();
+        //alertStatusUI = FindAnyObjectByType<AlertStatusUI>();
         waypointsCount = waypoints.Count;
         slowTrapManager = FindAnyObjectByType<SlowTrapManager>();
     }
@@ -88,6 +90,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Standby;
                 }
+                //alertStatusUI.HiddenStatus();
 
                 break;
             case Behaviours.Chase:
@@ -103,6 +106,7 @@ public class EnemyAI : MonoBehaviour
                     gun.transform.localEulerAngles = new Vector3(0, 0, 0);
                     aiState = Behaviours.Search;
                 }
+                //alertStatusUI.AlertStatus();
 
                 break;
             case Behaviours.Search:
@@ -116,6 +120,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Patrol;
                 }
+                //alertStatusUI.SearchingStatus();
 
                 break;
             case Behaviours.Standby:
@@ -148,13 +153,19 @@ public class EnemyAI : MonoBehaviour
                     aiState = Behaviours.Alerted;
                 }
 
+                //alertStatusUI.HiddenStatus();
+
                 break;
             case Behaviours.Alerted:
+                //alertStatusUI.AlertStatus();
                 GoToGeneralTargetArea();
                 break;
             case Behaviours.Chase:
+
+                //alertStatusUI.AlertStatus();
                 if (enemyView.IsPlayerVisible())
                 {
+                    //alertStatusUI.AlertStatus();
                     ChaseTarget();
                     ShootTarget();
                 }
@@ -179,6 +190,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Patrol;
                 }
+                //alertStatusUI.SearchingStatus();
 
                 break;
         }
@@ -199,13 +211,16 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Alerted;
                 }
+                //alertStatusUI.HiddenStatus();
 
                 break;
             case Behaviours.Alerted:
+                //alertStatusUI.AlertStatus();
                 GoToGeneralTargetArea();
 
                 break;
             case Behaviours.Chase:
+                //alertStatusUI.AlertStatus();
                 if (enemyView.IsPlayerVisible())
                 {
                     ChaseTarget();
@@ -214,7 +229,6 @@ public class EnemyAI : MonoBehaviour
                 {
                     searchTimer = searchDuration;
                     navAgent.SetDestination(destination);
-                    gun.transform.localEulerAngles = new Vector3(0, 0, 0);
                     hasAlerted = false;
                     aiState = Behaviours.Search;
                 }
@@ -231,6 +245,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     aiState = Behaviours.Patrol;
                 }
+                //alertStatusUI.SearchingStatus();
 
                 break;
         }
@@ -239,6 +254,7 @@ public class EnemyAI : MonoBehaviour
     //this has the enemy follow waypoints
     public void Patrol()
     {
+        //alertStatusUI.HiddenStatus();
         destination = waypoints[curWaypoint].position;
         //distance = Vector3.Distance(gameObject.transform.position, waypoints[curWaypoint].position);
 
@@ -286,6 +302,8 @@ public class EnemyAI : MonoBehaviour
     //unless it has to go to a door to open it then the %age will probably increase when it ge
     public void TrapperPatrol()
     {
+        //alertStatusUI.HiddenStatus();
+
         if (!PathReachable(destination))
         {
             GoToClosestDoor();
@@ -295,7 +313,7 @@ public class EnemyAI : MonoBehaviour
         {
             int randomNum = UnityEngine.Random.Range(1, 101);
 
-            if(randomNum <= 5)
+            if(randomNum <= 3)
             {
                 PlaceTrap();
             }
@@ -316,8 +334,14 @@ public class EnemyAI : MonoBehaviour
     //upon seeing the player, the enemy will then chase after the player
     public void ChaseTarget()
     {
+        //alertStatusUI.AlertStatus();
         destination = playerPosition.position;
         lastPlayerLocation = destination;
+
+        if (!PathReachable(destination))
+        {
+            GoToClosestDoor();
+        }
 
         //while the method is still used on the single agents, it only works with the multi-agent behaviours
         if (!hasAlerted && (isAdvMultiAgent || isMultiAgent))
@@ -344,6 +368,11 @@ public class EnemyAI : MonoBehaviour
             if (NavMesh.SamplePosition(generalArea, out hit, generalRadius, NavMesh.AllAreas))
             {
                 alertedArea = hit.position;
+            }
+
+            if (!PathReachable(alertedArea))
+            {
+                GoToClosestDoor();
             }
 
             navAgent.SetDestination(alertedArea);
@@ -374,6 +403,7 @@ public class EnemyAI : MonoBehaviour
     {
         if(navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
+            //alertStatusUI.SearchingStatus();
             searchTimer -= Time.deltaTime;
             this.transform.Rotate(0, 80 * Time.deltaTime, 0);
         }
