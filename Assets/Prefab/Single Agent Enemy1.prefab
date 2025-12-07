@@ -269,7 +269,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  angle: 150
+  angle: 90
   radius: 6.5
   player: {fileID: 0}
   playerVisable: 0

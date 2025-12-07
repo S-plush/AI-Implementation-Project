@@ -158,7 +158,16 @@ public class EnemyAI : MonoBehaviour
                 break;
             case Behaviours.Alerted:
                 //alertStatusUI.AlertStatus();
-                GoToGeneralTargetArea();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    aiState = Behaviours.Chase;
+                }
+                else if (!enemyView.IsPlayerVisible())
+                {
+                    GoToGeneralTargetArea();
+                }
+
                 break;
             case Behaviours.Chase:
 
@@ -216,7 +225,15 @@ public class EnemyAI : MonoBehaviour
                 break;
             case Behaviours.Alerted:
                 //alertStatusUI.AlertStatus();
-                GoToGeneralTargetArea();
+
+                if (enemyView.IsPlayerVisible())
+                {
+                    aiState = Behaviours.Chase;
+                }
+                else if (!enemyView.IsPlayerVisible())
+                {
+                    GoToGeneralTargetArea();
+                }
 
                 break;
             case Behaviours.Chase:
@@ -343,6 +360,12 @@ public class EnemyAI : MonoBehaviour
             GoToClosestDoor();
         }
 
+        if (isAlerted)
+        {
+            isAlerted = false;
+            hasAlertedPosition = false;
+        }
+
         //while the method is still used on the single agents, it only works with the multi-agent behaviours
         if (!hasAlerted && (isAdvMultiAgent || isMultiAgent))
         {
@@ -351,6 +374,7 @@ public class EnemyAI : MonoBehaviour
             hasAlerted = true;
         }
 
+        gameObject.transform.LookAt(destination);
         navAgent.SetDestination(destination);
         distance = Vector3.Distance(gameObject.transform.position, destination);
     }
