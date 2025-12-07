@@ -7,6 +7,7 @@ public class KeyInteraction : MonoBehaviour
     [SerializeField] GameObject exitDoor;
 
     private ExitDoor updateExitDoor;
+    private PlayerControls player;
 
     private bool playerInside = false;
 
@@ -14,6 +15,7 @@ public class KeyInteraction : MonoBehaviour
     void Start()
     {
         updateExitDoor = exitDoor.GetComponent<ExitDoor>();
+        player = FindAnyObjectByType<PlayerControls>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class KeyInteraction : MonoBehaviour
     {
         if(playerInside && Input.GetKey(KeyCode.E))
         {
+            player.HidePressE();
             Destroy(this.gameObject);
         }
     }
@@ -30,6 +33,7 @@ public class KeyInteraction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInside = true;
+            player.ShowPressE();
         }
     }
 
@@ -38,6 +42,7 @@ public class KeyInteraction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInside = false;
+            player.HidePressE();
         }
     }
 

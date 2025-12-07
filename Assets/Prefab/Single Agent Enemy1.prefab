@@ -269,7 +269,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  angle: 75
+  angle: 90
   radius: 6.5
   player: {fileID: 0}
   playerVisable: 0
@@ -298,10 +298,11 @@ MonoBehaviour:
   attackSpawn: {fileID: 3108269392280769172}
   searchDuration: 10
   timer: 3
-  generalRadius: 0
+  generalRadius: 15
   enemyID: 0
   isMultiAgent: 0
   isAdvMultiAgent: 0
+  aiState: 0
   isAlerted: 0
 --- !u!195 &5623431392901201710
 NavMeshAgent:

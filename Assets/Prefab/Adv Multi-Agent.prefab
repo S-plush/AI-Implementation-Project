@@ -126,13 +126,17 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  friendlyMask:
+    serializedVersion: 2
+    m_Bits: 0
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  angle: 75
+  angle: 90
   radius: 6.5
   player: {fileID: 0}
   playerVisable: 0
+  friendlyVisable: 0
 --- !u!114 &8706046000146490428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,10 +165,11 @@ MonoBehaviour:
   attackSpawn: {fileID: 248619917096164557}
   searchDuration: 10
   timer: 3
-  generalRadius: 50
+  generalRadius: 25
   enemyID: 0
   isMultiAgent: 0
   isAdvMultiAgent: 1
+  aiState: 0
   isAlerted: 0
 --- !u!54 &2158847195272790956
 Rigidbody:

@@ -17,6 +17,7 @@ public class ExitDoor : MonoBehaviour
 
     private int keyCount;
     private int maxKeyCount;
+    private bool playedOnce = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +30,12 @@ public class ExitDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(keyCount == maxKeyCount || Input.GetKeyDown(KeyCode.P))
+        if(keyCount == maxKeyCount && !playedOnce)
         {
             Debug.Log("exit door is now open");
+
             StartCoroutine(OpenExitDoor());
+            playedOnce = true;
         }
     }
 
@@ -54,7 +57,7 @@ public class ExitDoor : MonoBehaviour
         doorCam.SetActive(true);
         doorAnimation.Play("Open Exit Door");
         yield return new WaitForSecondsRealtime(2f);
-        Time.timeScale = 1.0f;
         doorCam.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 }
